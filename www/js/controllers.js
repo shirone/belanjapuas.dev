@@ -12,4 +12,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
-});
+})
+
+.controller('homeCtrl', ['$scope', function ($scope) {
+	$scope.items = ['Dash'];
+	$scope.doRefresh = function(){
+		// console.log('active');
+		$scope.items.push('Dash '+Math.floor(Math.random() * 1000) + 4);
+		$scope.$broadcast('scroll.refreshComplete');
+	}
+}])
