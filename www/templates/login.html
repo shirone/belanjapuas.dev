@@ -1,0 +1,38 @@
+<div ng-controller="homeCtrl" animation="slide-left-right">
+	<ion-header-bar align-title="center" class="bar-positive hidden">
+	  	<div class="buttons">
+	    <button class="button" ng-click="doSomething()">Left Button</button>
+	  	</div>
+	  	<h1 class="title"><img class="title-image" src="http://www.ionicframework.com/img/ionic-logo-white.svg" width="123" height="43" /></h1>
+	  	<div class="buttons">
+	    	<button class="button">Right Button</button>
+	  	</div>
+	</ion-header-bar>
+	<ion-header-bar align-title="center" class="bar-positive">
+	  <div class="buttons">
+	    <button class="button" ng-click="doSomething()">Left Button</button>
+	  </div>
+	  <h1 class="title"> <i class="ion ion-home"></i> Home</h1>
+	  <div class="buttons">
+	    <button class="button">Right Button</button>
+	  </div>
+	</ion-header-bar>
+  	<ion-content class="padding" style="background-color: white;">
+		<div class="well" align="center">
+			<img src="http://laravel.dev/assets/favicon.png" alt="" class="img-responsive">
+		</div>
+		<form class="list">
+        <div>{{message}}</div>
+        <label class="item item-input">
+          <input type="text" placeholder="Username" ng-model="user.username" required>
+        </label>
+        <label class="item item-input">
+          <input type="password" placeholder="Password" ng-model="user.password" required>
+        </label>
+        <div class="padding">
+          <button class="button button-block button-stable" ng-click="login()">Login</button>
+        </div>
+      </form>
+  	</ion-content>
+
+</div>
