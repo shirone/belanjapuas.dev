@@ -1,9 +1,29 @@
-<ion-view title="Friends" animation="slide-left-right" icon="icon ion-heart">
-  <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="friend in friends" type="item-text-wrap" href="#/tab/friend/{{friend.id}}">
-        {{friend.name}}
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-view>
+<div ng-controller="homeCtrl" animation="slide-left-right">
+	<ion-header-bar align-title="center" class="bar-balanced">
+	  <div class="buttons">
+	    <button class="button" ng-click="doSomething()">Left Button</button>
+	  </div>
+	  <h1 class="title"> <i class="ion ion-home"></i> Menu </h1>
+	  <div class="buttons">
+	    <button class="button">Right Button</button>
+	  </div>
+	</ion-header-bar>
+  	<ion-content class="padding" style="background-color: white;">
+		<button class="button button-full button-positive">
+		  Full Width Block Button
+		</button>
+		<button class="button button-full button-positive">
+		  Full Width Block Button
+		</button>
+		<button class="button button-full button-positive">
+		  Full Width Block Button
+		</button>
+		<button class="button button-full button-positive">
+		  Full Width Block Button
+		</button>
+		<button class="button button-full button-positive">
+		  Full Width Block Button
+		</button>
+  	</ion-content>
+
+</div>
