@@ -11,6 +11,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
+.constant('$ionicLoadingConfig', {
+  template : '<span class="ion-loading-c fa-3x"></span>'
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('tab', {
@@ -27,11 +31,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-    .state('tab.friends', {
-      url: '/friends',
+    .state('tab.menu', {
+      url: '/menu',
       views: {
         'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
+          templateUrl: 'templates/menu.html',
           controller: 'FriendsCtrl'
         }
       }
@@ -45,15 +49,34 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-    .state('tab.account', {
-      url: '/account',
+    .state('tab.admin', {
+      url: '/admin',
       views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-account.html',
-          controller: 'AccountCtrl'
+        'tab-friends': {
+          templateUrl: 'templates/tab-admin.html',
+          controller: 'AdminCtrl'
         }
       }
-    });
+    })
+    .state('tab.product', {
+      url: '/menu-product',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/tab-menu-product.html',
+          controller: 'ProductCtrl'
+        }
+      }
+    })
+    .state('tab.tambahproduct', {
+      url: '/tambah-product',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/tambah-product.html',
+          controller: 'ProductCtrl'
+        }
+      }
+    })
+    ;
     $urlRouterProvider.otherwise('/tab/login');
 
 });
