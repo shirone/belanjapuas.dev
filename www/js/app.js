@@ -76,6 +76,51 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+    .state('tab.listproduct', {
+      url: '/list-product',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/listproduct.html',
+          controller: 'ProductCtrl'
+        }
+      }
+    })
+    .state('tab.editproduct', {
+      url: '/edit-product/:id',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/editproduct.html',
+          controller: 'ProductCtrl'
+        }
+      }
+    })
+    .state('tab.listkategori', {
+      url: '/list-kategori',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/listkategori.html',
+          controller: 'ProductCtrl'
+        }
+      }
+    })
+     .state('tab.listmember', {
+      url: '/list-member',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/listmember.html',
+          controller: 'MemberCtrl'
+        }
+      }
+    })
+    .state('tab.editmember', {
+      url: '/edit-member/:id',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/editmember.html',
+          controller: 'MemberCtrl'
+        }
+      }
+    })
     ;
     $urlRouterProvider.otherwise('/tab/login');
 

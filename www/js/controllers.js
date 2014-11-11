@@ -40,9 +40,17 @@ angular.module('starter.controllers', ['ionic'])
 				$location.path('/tab/menu-product');
 			}, 3000);
 		}
+
+		$scope.menumember = function(){
+			$ionicLoading.show();
+			$timeout(function(){
+				$ionicLoading.hide();
+				$location.path('/tab/list-member');
+			}, 3000);
+		}
 	}
 ])
-.controller('ProductCtrl', ['$scope','$ionicLoading','$timeout','$location', function ($scope,$ionicLoading,$timeout,$location) {
+.controller('ProductCtrl', ['$scope','$ionicLoading','$timeout','$location','$stateParams', function ($scope,$ionicLoading,$timeout,$location,$stateParams) {
 		$scope.tambahproduct = function(){
 			$ionicLoading.show();
 			$timeout(function(){
@@ -51,16 +59,31 @@ angular.module('starter.controllers', ['ionic'])
 			}, 3000);
 		}
 
+		$scope.product = function(){
+			$ionicLoading.show();
+			$timeout(function(){
+				$ionicLoading.hide();
+				$location.path('/tab/list-product');
+			}, 3000);
+		}
+
+		$scope.kategori = function(){
+			$ionicLoading.show();
+			$timeout(function(){
+				$ionicLoading.hide();
+				$location.path('/tab/list-kategori');
+			}, 3000);
+		}
+
 		$scope.ImageURI = '';
 		$scope.picData = 'img/favicon.png';
     	function UploadPicture(imageURI) {
 	      // $scope.ImageURI =  imageURI;
 	      $scope.picData = "data:image/jpeg;base64," +imageURI;
-	      $scope.picCool = dataURItoBlob("data:image/jpeg;base64," +imageURI);
+	      // $scope.picCool = dataURItoBlob("data:image/jpeg;base64," +imageURI);
 	      $scope.$apply();
-	      alert($scope.picCool);
+	      // alert($scope.picCool);
     	}
-
     	$scope.ShowPictures = function() {
         	navigator.camera.getPicture(UploadPicture, function(message) {
                 alert('get picture failed');
@@ -89,4 +112,13 @@ angular.module('starter.controllers', ['ionic'])
 		}
 
 	}
-]);
+])
+.controller('MemberCtrl', [
+	'$scope','$ionicLoading','$timeout','$location','$stateParams', 
+	function ($scope,$ionicLoading,$timeout,$location,$stateParams) {
+		console.log($stateParams.id);
+	}
+])
+
+
+;

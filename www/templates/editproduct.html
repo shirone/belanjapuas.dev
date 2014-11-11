@@ -1,0 +1,46 @@
+<div animation="slide-left-right" ng-controller="ProductCtrl">
+	<ion-header-bar align-title="center" class="bar-balanced">
+	  <h1 class="title"> <i class="ion ion-home"></i> Edit Produk </h1>
+	</ion-header-bar>
+  	<ion-content class="padding" style="background-color: white;">
+		<div class="list list-inset">
+			<label class="item item-input item-stacked-label">
+		    	<span class="input-label">Nama Produk</span>
+		    	<input type="text" placeholder="Nama Produk">
+		  	</label>
+			<div class="list">
+		  		<!-- <div class="well well-sm">
+		  			Kategori Produk -->
+		    	<label class="item item-input item-select">
+			      <div class="input-label">
+			        Status
+			      </div>
+			      <select>
+			        <option>Blue</option>
+			        <option selected>Green</option>
+			        <option>Red</option>
+			      </select>
+			    </label>
+		  		<!-- </div> -->
+			</div>
+			<label class="item item-input item-stacked-label">
+		    	<span class="input-label">Harga</span>
+		    	<input type="text" placeholder="Harga Produk">
+		  	</label>
+			<label class="item item-input item-stacked-label">
+		    	<span class="input-label">Stok Barang</span>
+		    	<input type="text" placeholder="Stok Barang">
+		  	</label>
+			<label class="item item-input item-stacked-label">
+		    	<span class="input-label">Harga</span>
+		    	<input type="text" placeholder="Deskripsi">
+		  	</label>
+		  	<center>
+	    		<img src="{{picData}}" height="150px">
+	    	</center>
+	    	<button class="button button-full button-positive" ng-click="ShowPictures()">
+	      	Upload
+	    	</button>
+		</div>
+  	</ion-content>
+</div>
