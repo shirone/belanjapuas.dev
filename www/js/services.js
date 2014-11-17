@@ -26,8 +26,8 @@ angular.module('starter.services', [])
 })
 
 .factory('resAndroid', function ($resource) {
-    return $resource('http://belanjapuas.dev/android/:param',{},{
-    // return $resource('http://10.0.2.2/android/:param',{},{
+    // return $resource('http://belanjapuas.dev/android/:param',{},{
+    return $resource('http://10.0.2.2/android/:param',{},{
         getLogin: {method:'POST',params:{param:'login'}},
         getProduk: {method:'POST',params:{param:'produk'}},
         getProdukDetail : {method:'POST',params:{param:'detail_produk'}},

@@ -133,7 +133,7 @@ angular.module('starter.controllers', ['ionic'])
 			$ionicLoading.show();
 			$timeout(function(){
 				$ionicLoading.hide();
-				$location.path('/tab/konfirmasi-pembayaran');
+				$location.path('/tab/menu-konfirmasi-pembayaran');
 			}, 3000);
 		}
 
@@ -346,8 +346,22 @@ angular.module('starter.controllers', ['ionic'])
 		// $stateParams.id;
 	}
 ])
-.controller('KnfirmCtrl', ['$scope', function ($scope) {
-	
+.controller('KnfirmCtrl', ['$scope','$ionicLoading','$timeout','$location', function ($scope,$ionicLoading,$timeout,$location) {
+	$scope.konfirmpem = function(){
+		$ionicLoading.show();
+		$timeout(function(){
+			$ionicLoading.hide();
+			$location.path('/tab/konfirmasi-pembayaran');
+		}, 3000);
+	}
+
+	$scope.cekkonfirmpem = function(){
+		$ionicLoading.show();
+		$timeout(function(){
+			$ionicLoading.hide();
+			$location.path('/tab/cek-konfirmasi-pembayaran');
+		}, 3000);
+	}
 }])
 
 .controller('ReportCtrl', ['$scope', function ($scope) {
