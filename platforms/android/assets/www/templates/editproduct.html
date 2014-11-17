@@ -1,0 +1,44 @@
+<div animation="slide-left-right">
+	<ion-header-bar align-title="center" class="bar-balanced">
+	  <h1 class="title"> <i class="ion ion-home"></i> Edit Produk </h1>
+	   <div class="buttons">
+	    	<button class="button button-positive" ng-click="saveupdateProduk()">Save &nbsp;<i class="fa fa-save"></i></button>
+	  	</div>
+	</ion-header-bar>
+  	<ion-content class="padding" style="background-color: white;">
+		<div class="list list-inset">
+			<label class="item item-input item-stacked-label">
+		    	<span class="input-label">Nama Produk</span>
+		    	<input type="text" placeholder="Nama Produk" ng-model="forms.produk">
+		  	</label>
+			<div class="list">
+		    	<label class="item item-input item-select">
+			      <div class="input-label">
+			        Kategori Produk
+			      </div>
+			      <select ng-model="kategori" ng-options="item as item.nama_kategori for item in kategori" ng-change="selectKategori(kategori)" ng-selected="forms.kategori" >
+			        <option style="display:none">--select none--</option>
+			      </select>
+			    </label>
+			</div>
+			<label class="item item-input item-stacked-label">
+		    	<span class="input-label">Harga</span>
+		    	<input type="text" placeholder="Harga Produk" ng-model="forms.harga">
+		  	</label>
+			<label class="item item-input item-stacked-label">
+		    	<span class="input-label">Stok Barang</span>
+		    	<input type="text" placeholder="Stok Barang" ng-model="forms.stok">
+		  	</label>
+			<label class="item item-input item-stacked-label">
+		    	<span class="input-label">Deskripsi</span>
+		    	<input type="text" placeholder="Deskripsi" value="{{produkdetail.deskripsi}}" ng-model="forms.deskripsi">
+		  	</label>
+		  	<center>
+	    		<img src="{{produkdetail.gbr_besar}}" height="150px">
+	    	</center>
+	    	<button class="button button-full button-positive" ng-click="ShowPictures()">
+	      	Upload
+	    	</button>
+		</div>
+  	</ion-content>
+</div>

@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngResource'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -94,15 +94,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-    .state('tab.listkategori', {
-      url: '/list-kategori',
-      views: {
-        'tab-friends': {
-          templateUrl: 'templates/listkategori.html',
-          controller: 'ProductCtrl'
-        }
-      }
-    })
      .state('tab.listmember', {
       url: '/list-member',
       views: {
@@ -118,6 +109,87 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         'tab-friends': {
           templateUrl: 'templates/editmember.html',
           controller: 'MemberCtrl'
+        }
+      }
+    })
+    .state('tab.menu-konfirmasi-pembayaran', {
+      url: '/menu-konfirmasi-pembayaran',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/menu-konfirmasi.html',
+          controller: 'KnfirmCtrl'
+        }
+      }
+    })
+    .state('tab.konfirmasi-pembayaran', {
+      url: '/konfirmasi-pembayaran',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/konfirmasi-pembayaran.html',
+          controller: 'KnfirmCtrl'
+        }
+      }
+    })
+    .state('tab.cek-konfirmasi-pembayaran', {
+      url: '/cek-konfirmasi-pembayaran',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/cek-konfirmasi-pembayaran.html',
+          controller: 'KnfirmCtrl'
+        }
+      }
+    })
+    .state('tab.laporan-transaksi', {
+      url: '/laporan-transaksi',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/laporan-transaksi.html',
+          controller: 'ReportCtrl'
+        }
+      }
+    })
+    .state('tab.kirim-barang', {
+      url: '/kirim-barang',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/kirim-barang.html',
+          controller: 'SendCtrl'
+        }
+      }
+    })
+    .state('tab.menukategori', {
+      url: '/menukategori',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/menukategori.html',
+          controller: 'CategoryCtrl'
+        }
+      }
+    })
+    .state('tab.listkategori', {
+      url: '/list-kategori',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/listkategori.html',
+          controller: 'CategoryCtrl'
+        }
+      }
+    })
+    .state('tab.tambah-kategori', {
+      url: '/tambah-kategori',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/tambah-kategori.html',
+          controller: 'CategoryCtrl'
+        }
+      }
+    })
+    .state('tab.edit-kategori', {
+      url: '/edit-kategori/:id',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/edit-kategori.html',
+          controller: 'CategoryCtrl'
         }
       }
     })

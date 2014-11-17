@@ -1,54 +1,48 @@
-<div animation="slide-left-right" ng-controller="ProductCtrl">
+<div animation="slide-left-right">
 	<ion-header-bar align-title="center" class="bar-balanced">
 	  <h1 class="title"> <i class="ion ion-home"></i> Tambah Produk </h1>
+	   <div class="buttons">
+	    	<button class="button button-positive" ng-click="save()">Save &nbsp;<i class="fa fa-save"></i></button>
+	  	</div>
 	</ion-header-bar>
   	<ion-content class="padding" style="background-color: white;">
 		<div class="list list-inset">
 		  <label class="item item-input item-stacked-label">
 		    <span class="input-label">Nama Produk</span>
-		    <input type="text" placeholder="Nama Produk">
+		    <input type="text" placeholder="Nama Produk" ng-model="forms.produk">
 		  </label>
-		  <div class="list">
-		  		<div class="well well-sm">
-		  			Kategori Produk
+		  	</br>
+		  	<div class="list">
 		    	<label class="item item-input item-select">
 			      <div class="input-label">
-			        Lightsaber
+			        Kategori Produk
 			      </div>
-			      <select>
-			        <option>Blue</option>
-			        <option selected>Green</option>
-			        <option>Red</option>
+			      <select ng-model="kategori1" ng-options="item as item.nama_kategori for item in kategorilist" ng-change="selectKategori1(kategori1)" ng-selected="forms.kategori1" >
+			        <option style="display:none">--select none--</option>
 			      </select>
-			    </label>
-		  		</div>
-		  </div>
-		  <div class="list">
-		  		<div class="well well-sm">
-		  			Tipe Produk
+			   </label>
+
+		  		</br>
 		    	<label class="item item-input item-select">
 			      <div class="input-label">
-			        Lightsaber
+			        Tipe Produk
 			      </div>
-			      <select>
-			        <option>Blue</option>
-			        <option selected>Green</option>
-			        <option>Red</option>
+			      <select ng-model="kategori2" ng-options="item as item.nama_kategori for item in kategorilist" ng-change="selectKategori2(kategori2)" ng-selected="forms.kategori2" >
+			        <option style="display:none">--select none--</option>
 			      </select>
-			    </label>
-		  		</div>
-		  </div>
+			   </label>
+		  	</div>
 		  <label class="item item-input item-stacked-label">
 		    <span class="input-label">Harga</span>
-		    <input type="text" placeholder="Harga">
+		    <input type="text" placeholder="Harga" ng-model="forms.harga">
 		  </label>
 		  <label class="item item-input item-stacked-label">
 		    <span class="input-label">Stok Barang</span>
-		    <input type="text" placeholder="Stok barang">
+		    <input type="text" placeholder="Stok barang" ng-model="forms.stok">
 		  </label>
 		  <label class="item item-input item-stacked-label">
 		    <span class="input-label">Deskripsi</span>
-		    <input type="text" placeholder="Deskripsi">
+		    <input type="text" placeholder="Deskripsi" ng-model="forms.deskripsi">
 		  </label>
 			  <br>
 	  		<center>

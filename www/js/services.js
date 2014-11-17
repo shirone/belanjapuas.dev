@@ -23,4 +23,21 @@ angular.module('starter.services', [])
       return friends[friendId];
     }
   }
-});
+})
+
+.factory('resAndroid', function ($resource) {
+    return $resource('http://10.0.2.2/android/:param',{},{
+        getLogin: {method:'POST',params:{param:'login'}},
+        getProduk: {method:'POST',params:{param:'produk'}},
+        getProdukDetail : {method:'POST',params:{param:'detail_produk'}},
+        getKategori : {method:'POST',params:{param:'kategoriList'}},
+        getKategoriList : {method:'POST',params:{param:'spinKategori'}},
+        saveProduk : {method:'POST',params:{param:'tambah_produk'}},
+        updateProduk : {method:'POST',params:{param:'updateProdukAndroid'}},
+        akunAdmin:{method:'POST',params:{param:'akunadmin'}},
+        saveAdmin:{method:'POST',params:{param:'updateakuadmin'}},
+        savePass:{method:'POST',params:{param:'updateakuadminpassword'}},
+    });
+  })
+
+;
