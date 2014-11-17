@@ -1,4 +1,4 @@
-<div animation="slide-left-right" ng-controller="MemberCtrl">
+<div animation="slide-left-right">
 	<ion-header-bar align-title="center" class="bar-balanced">
 	  <h1 class="title"> <i class="ion ion-home"></i> Edit Member </h1>
 	</ion-header-bar>
@@ -6,39 +6,39 @@
 		<div class="list list-inset">
 			<label class="item item-input item-stacked-label">
 		    	<span class="input-label">Username</span>
-		    	<input type="text" placeholder="Username">
+		    	<input type="text" placeholder="Username" ng-model="forms.username_user">
 		  	</label>
 		  	<label class="item item-input item-stacked-label">
 		    	<span class="input-label">Nama</span>
-		    	<input type="text" placeholder="Nama">
+		    	<input type="text" placeholder="Nama" ng-model="forms.nama">
 		  	</label>
 		  	<label class="item item-input item-stacked-label">
 		    	<span class="input-label">Email</span>
-		    	<input type="text" placeholder="Email">
+		    	<input type="text" placeholder="Email" ng-model="forms.email">
 		  	</label>
 			<label class="item item-input item-stacked-label">
 		    	<span class="input-label">Alamat</span>
-		    	<input type="text" placeholder="Alamat">
+		    	<input type="text" placeholder="Alamat" ng-model="forms.alamat">
 		  	</label>
 			<label class="item item-input item-stacked-label">
 		    	<span class="input-label">Telepon</span>
-		    	<input type="text" placeholder="Telepon">
+		    	<input type="text" placeholder="Telepon" ng-model="forms.telpon">
 		  	</label>
 			<label class="item item-input item-stacked-label">
 		    	<span class="input-label">Propinsi</span>
-		    	<input type="text" placeholder="Propinsi">
+		    	<input type="text" placeholder="Propinsi" ng-model="forms.propinsi">
 		  	</label>
-		  	<label class="item item-input item-stacked-label">
+		  	<label class="item item-input item-stacked-label" >
 		    	<span class="input-label">Kota</span>
-		    	<input type="text" placeholder="Kota">
+		    	<input type="text" placeholder="Kota" ng-model="forms.kota">
 		  	</label>
 		  	<label class="item item-input item-stacked-label">
 		    	<span class="input-label">Kodepos</span>
-		    	<input type="text" placeholder="Kodepos">
+		    	<input type="text" placeholder="Kodepos" ng-model="forms.kode_pos">
 		  	</label>
 		  	<label class="item item-input item-stacked-label">
 		    	<span class="input-label">Tgl Lahir</span>
-		    	<input type="text" placeholder="Tgl Lahir">
+		    	<input type="text" placeholder="Tgl Lahir" ng-model="forms.tgl_lahir">
 		  	</label>
 		  	<div class="list">
 		  		<!-- <div class="well well-sm"> -->
@@ -47,15 +47,13 @@
 			      <div class="input-label">
 			        Status
 			      </div>
-			      <select>
-			        <option>Blue</option>
-			        <option selected>Green</option>
-			        <option>Red</option>
+			      <select ng-model="statusMember" ng-options="item as item.name for item in status" ng-change="selectStatus(statusMember)" ng-selected="forms.stts" >
+			        <option style="display:none">--select none--</option>
 			      </select>
 			    </label>
 		  		<!-- </div> -->
 			</div>
-			<button class="button button-full button-positive">
+			<button class="button button-full button-positive" ng-click="saveMember()">
 			  Save
 			</button>
 		</div>

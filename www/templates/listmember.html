@@ -1,22 +1,11 @@
-<div animation="slide-left-right" ng-controller="ProductCtrl">
+<div animation="slide-left-right">
 	<ion-header-bar align-title="center" class="bar-balanced">
 	  <h1 class="title"> <i class="ion ion-home"></i> List Member </h1>
 	</ion-header-bar>
   	<ion-content class="padding" style="background-color: white;">
-		<a class="item item-avatar" href="#/tab/edit-member/1">
-	      <img src="venkman.jpg">
-	      <h2>Venkman</h2>
-	      <p>Back off, man. I'm a scientist.</p>
-	   </a>
-	   <a class="item item-avatar" href="#">
-	      <img src="venkman.jpg">
-	      <h2>Venkman</h2>
-	      <p>Back off, man. I'm a scientist.</p>
-	   </a>
-	   <a class="item item-avatar" href="#">
-	      <img src="venkman.jpg">
-	      <h2>Venkman</h2>
-	      <p>Back off, man. I'm a scientist.</p>
+		<a class="item" href="#/tab/edit-member/{{m.kode_user}}" ng-repeat="m in member">
+	      <h2>{{m.nama}}</h2>
+	      <p>{{m.email}}</p>
 	   </a>
   	</ion-content>
 </div>

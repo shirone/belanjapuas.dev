@@ -3,7 +3,7 @@
 	  <h1 class="title"> <i class="ion ion-home"></i> List Produk </h1>
 	</ion-header-bar>
   	<ion-content class="padding" style="background-color: white;">
-		<a class="item item-avatar" href="/#/tab/edit-product/{{p.kode_produk}}" ng-repeat="p in produk">
+		<a class="item item-avatar" href="#/tab/edit-product/{{p.kode_produk}}" ng-repeat="p in produk">
 	      <img src="{{p.gbr_kecil}}">
 	      <h2>{{p.produk}}</h2>
 	      <p>Rp. {{p.harga}}</p>

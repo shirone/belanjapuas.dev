@@ -26,6 +26,7 @@ angular.module('starter.services', [])
 })
 
 .factory('resAndroid', function ($resource) {
+    // return $resource('http://belanjapuas.dev/android/:param',{},{
     return $resource('http://10.0.2.2/android/:param',{},{
         getLogin: {method:'POST',params:{param:'login'}},
         getProduk: {method:'POST',params:{param:'produk'}},
@@ -37,6 +38,9 @@ angular.module('starter.services', [])
         akunAdmin:{method:'POST',params:{param:'akunadmin'}},
         saveAdmin:{method:'POST',params:{param:'updateakuadmin'}},
         savePass:{method:'POST',params:{param:'updateakuadminpassword'}},
+        getMember:{method:'POST',params:{param:'member'}},
+        getMemberDetail:{method:'POST',params:{param:'memberDetails'}},
+        saveMember:{method:'POST',params:{param:'savememberDetails'}},
     });
   })
 

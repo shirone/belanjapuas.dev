@@ -12,8 +12,8 @@ angular.module('starter.controllers', ['ionic'])
 })
 
 .controller('AdminCtrl',[
-	'$scope', 'resAndroid',
-	function($scope,resAndroid) {
+	'$scope', 'resAndroid','$ionicPopup',
+	function($scope,resAndroid,$ionicPopup) {
 		var defaultForm = {
 			nama :'',
 			email : '',
@@ -29,7 +29,12 @@ angular.module('starter.controllers', ['ionic'])
 
 		$scope.saveAdminPro = function(){
 			resAndroid.saveAdmin($scope.forms,function(response){
-				console.log(response);
+				if(response.success==1){
+					var alertPopup = $ionicPopup.alert({
+				     title: 'Update Profile',
+				     template: 'Update Succesful'
+				   });
+				}
 			});
 		}
 
@@ -42,7 +47,19 @@ angular.module('starter.controllers', ['ionic'])
 		$scope.formspass = angular.copy(defaultPass);
 		$scope.savePassword = function(){
 			resAndroid.savePass($scope.formspass,function(response){
-				console.log(response);
+				console.log(response)
+				if(response.success==1){
+					var alertPopup = $ionicPopup.alert({
+				     title: 'Update password',
+				     template: 'Update Succesful'
+				   });
+				   $scope.formspass = [];
+				}else{
+					var alertPopup = $ionicPopup.alert({
+				     title: 'Update password',
+				     template: 'Update Not Succesful'
+				   });
+				}
 			});
 		}
 
@@ -116,7 +133,7 @@ angular.module('starter.controllers', ['ionic'])
 			$ionicLoading.show();
 			$timeout(function(){
 				$ionicLoading.hide();
-				$location.path('/tab/konfirmasi-pembayaran');
+				$location.path('/tab/menu-konfirmasi-pembayaran');
 			}, 3000);
 		}
 
@@ -138,8 +155,8 @@ angular.module('starter.controllers', ['ionic'])
 	}
 ])
 .controller('ProductCtrl', [
-	'$scope','$ionicLoading','$timeout','$location','$stateParams', 'resAndroid','$stateParams',
-	function ($scope,$ionicLoading,$timeout,$location,$stateParams,resAndroid,$stateParams) {
+	'$scope','$ionicLoading','$timeout','$location','$stateParams', 'resAndroid','$stateParams','$ionicPopup',
+	function ($scope,$ionicLoading,$timeout,$location,$stateParams,resAndroid,$stateParams,$ionicPopup) {
 		var defaultForm = {
 			kode_produk : '',
 			gbr_besar : '',
@@ -187,7 +204,7 @@ angular.module('starter.controllers', ['ionic'])
 		}
 
 		resAndroid.getKategori({},function(response){
-			$scope.kategori = response.kategori;
+			$scope.kategorilistAll = response.kategori;
 		});
 		resAndroid.getKategoriList({},function(response){
 			$scope.kategorilist = response.kategori;
@@ -207,7 +224,7 @@ angular.module('starter.controllers', ['ionic'])
     	}
     	$scope.ShowPictures = function() {
         	navigator.camera.getPicture(UploadPicture, function(message) {
-                alert('get picture failed');
+                // alert('get picture failed');
             }, {
                 quality: 50,
                 destinationType: 0,
@@ -240,26 +257,111 @@ angular.module('starter.controllers', ['ionic'])
 		$scope.save = function(){
 			resAndroid.saveProduk($scope.forms,function(response){
 				$scope.resSave = response;
+				if(response.success){
+					var alertPopup = $ionicPopup.alert({
+				     	title: 'Insert Product',
+				     	template: 'Succesfull Insert Produk'
+				   });
+			   }else{
+			   	var alertPopup = $ionicPopup.alert({
+				     	title: 'Insert Product',
+				     	template: 'Unsuccesfull Insert Produk'
+				   });
+			   }
 			});
 		}
 
 		$scope.saveupdateProduk = function(){
 			resAndroid.updateProduk($scope.forms,function(response){
 				$scope.updateProduk = response;
-				console.log(response);
+				if(response.success){
+					var alertPopup = $ionicPopup.alert({
+				     	title: 'Update Product',
+				     	template: response.message
+				   });
+			   }else{
+			   	var alertPopup = $ionicPopup.alert({
+				     	title: 'Insert Product',
+				     	template: 'Unsuccesfull Insert Produk'
+				   });
+			   }
 			});
 		}
 
 	}
 ])
 .controller('MemberCtrl', [
-	'$scope','$ionicLoading','$timeout','$location','$stateParams', 
-	function ($scope,$ionicLoading,$timeout,$location,$stateParams) {
-		console.log($stateParams.id);
+	'$scope','$ionicLoading','$timeout','$location','$stateParams','resAndroid','$ionicPopup',
+	function ($scope,$ionicLoading,$timeout,$location,$stateParams,resAndroid,$ionicPopup) {
+		resAndroid.getMember({},function(response){
+			$scope.member = response.member;
+		});
+
+		$scope.status = [
+			{
+				id_status : '1',
+ 				name : 'Aktif'
+			},
+			{
+				id_status : '0',
+ 				name : 'Non-Aktif'
+			}
+		]
+		var defaultMember = {
+			email : '',
+			alamat: '',
+			kode_pos : '',
+			nama : '',
+			propinsi : '',
+			stts : '',
+			telpon : '',
+			tgl_lahir : '',
+			username_user : ''
+		}
+		$scope.forms = angular.copy(defaultMember);
+		if (angular.isDefined($stateParams.id)) {
+			resAndroid.getMemberDetail({'kode_user':$stateParams.id},function(response){
+				$scope.forms = response.member[0];
+			});
+		}
+		$scope.selectStatus = function(name){
+			$scope.forms.stts = name.id_status;
+			console.log(name.id_status);
+		}
+		$scope.saveMember = function(){
+			resAndroid.saveMember($scope.forms,function(response){
+				if(response.success){
+					var alertPopup = $ionicPopup.alert({
+				     	title: 'Update Member',
+				     	template: response.message
+				   });
+			   }else{
+			   	var alertPopup = $ionicPopup.alert({
+				     	title: 'Update Member',
+				     	template: response.message
+				   });
+			   }
+			});	
+		}
+		// $stateParams.id;
 	}
 ])
-.controller('KnfirmCtrl', ['$scope', function ($scope) {
-	
+.controller('KnfirmCtrl', ['$scope','$ionicLoading','$timeout','$location', function ($scope,$ionicLoading,$timeout,$location) {
+	$scope.konfirmpem = function(){
+		$ionicLoading.show();
+		$timeout(function(){
+			$ionicLoading.hide();
+			$location.path('/tab/konfirmasi-pembayaran');
+		}, 3000);
+	}
+
+	$scope.cekkonfirmpem = function(){
+		$ionicLoading.show();
+		$timeout(function(){
+			$ionicLoading.hide();
+			$location.path('/tab/cek-konfirmasi-pembayaran');
+		}, 3000);
+	}
 }])
 
 .controller('ReportCtrl', ['$scope', function ($scope) {
