@@ -370,21 +370,102 @@ angular.module('starter.controllers', ['ionic'])
 .controller('SendCtrl', ['$scope', function ($scope) {
 	
 }])
-.controller('CategoryCtrl', ['$scope','$ionicLoading','$timeout','$location', function ($scope,$ionicLoading,$timeout,$location) {
-	$scope.tambahkategori = function(){
-		$ionicLoading.show();
-		$timeout(function(){
-			$ionicLoading.hide();
-			$location.path('/tab/tambah-kategori');
-		}, 3000);
-	}
+.controller('CategoryCtrl', [
+	'$scope','$ionicLoading','$timeout','$location','resAndroid','$ionicPopup','$stateParams',
+	function ($scope,$ionicLoading,$timeout,$location,resAndroid,$ionicPopup,$stateParams) {
+		$scope.tambahkategori = function(){
+			$ionicLoading.show();
+			$timeout(function(){
+				$ionicLoading.hide();
+				$location.path('/tab/tambah-kategori');
+			}, 3000);
+		}
 
-	$scope.listkategori = function(){
-		$ionicLoading.show();
-		$timeout(function(){
-			$ionicLoading.hide();
-			$location.path('/tab/list-kategori');
-		}, 3000);
+		$scope.listkategori = function(){
+			$ionicLoading.show();
+			$timeout(function(){
+				$ionicLoading.hide();
+				$location.path('/tab/list-kategori');
+			}, 3000);
+		}
+		var defaultKategori = {
+			nama_kategori : '',
+			kode_parent : '',
+			kode_level : ''
+		}
+		var defaultKategoriDetail = {
+			id_kategori : '',
+			nama_kategori : '',
+		}
+
+		$scope.forms = angular.copy(defaultKategori);
+		$scope.formsdetail = angular.copy(defaultKategoriDetail);
+		$scope.lv2 = [
+			{
+				lvl : '0'
+			},
+			{
+				lvl : '1'
+			},
+			{
+				lvl : '2'
+			}
+		]
+
+		resAndroid.getKategoriList({},function(response){
+			$scope.kategoriList = response.kategori;
+		});
+
+		resAndroid.kategori_lv1({},function(response){
+			$scope.lv1 = response.kategori;
+		});
+		$scope.selectKategori1 = function(name){
+			$scope.forms.kode_parent = name.id_kategori;
+		}
+
+		$scope.selectKategori2 = function(name){
+			$scope.forms.kode_level = name.lvl;
+		}
+
+		if (angular.isDefined($stateParams.id)) {
+			resAndroid.kategoryDetail({id_kategori:$stateParams.id},function(response){
+				$scope.formsdetail = response.kategori[0];
+			});
+		}
+		$scope.save = function(){
+			resAndroid.savekategorilvl($scope.forms,function(response){
+				if(response.success){
+					$scope.forms=[]
+					var alertPopup = $ionicPopup.alert({
+				     	title: 'Save Category',
+				     	template: response.message
+				   });
+			   }else{
+			   	var alertPopup = $ionicPopup.alert({
+				     	title: 'Save Category',
+				     	template: response.message
+				   });
+			   }
+			});
+		}
+
+		$scope.savedetail = function(){
+			resAndroid.saveKategori($scope.formsdetail,function(response){
+				console.log(response);
+				if(response.success){
+					$scope.forms=[]
+					var alertPopup = $ionicPopup.alert({
+				     	title: 'Save Category',
+				     	template: response.message
+				   });
+			   }else{
+			   	var alertPopup = $ionicPopup.alert({
+				     	title: 'Save Category',
+				     	template: response.message
+				   });
+			   }
+			});
+		}
 	}
-}])
+])
 ;

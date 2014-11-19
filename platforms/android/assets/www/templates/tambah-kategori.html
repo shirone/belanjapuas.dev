@@ -5,17 +5,15 @@
   	<ion-content class="padding" style="background-color: white;">
 		<label class="item item-input item-stacked-label">
 		    <span class="input-label">Nama Kategori</span>
-		    <input type="text" placeholder="Nama Kategori">
+		    <input type="text" placeholder="Nama Kategori" ng-model="forms.nama_kategori">
 		  </label>
 	   <div class="list">
 	    	<label class="item item-input item-select">
 		      <div class="input-label">
 		        Kategori Produk
 		      </div>
-		      <select>
-		        <option>Blue</option>
-		        <option selected>Green</option>
-		        <option>Red</option>
+		      <select ng-model="kode_parent" ng-options="item as item.nama_kategori for item in lv1" ng-change="selectKategori1(kode_parent)" ng-selected="forms.kode_parent" >
+			        <option style="display:none">--select none--</option>
 		      </select>
 		    </label>
 
@@ -23,14 +21,12 @@
 		      <div class="input-label">
 		        Tingkatan Level
 		      </div>
-		      <select>
-		        <option>Blue</option>
-		        <option selected>Green</option>
-		        <option>Red</option>
+		      <select ng-model="kode_level" ng-options="item as item.lvl for item in lv2" ng-change="selectKategori2(kode_level)" ng-selected="forms.kode_level" >
+			        <option style="display:none">--select none--</option>
 		      </select>
 		    </label>
 		  </div>
-		  <button class="button button-full button-positive">
+		  <button class="button button-full button-positive" ng-click="save()">
 		    Save
 		  </button>
 

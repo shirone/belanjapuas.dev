@@ -41,6 +41,10 @@ angular.module('starter.services', [])
         getMember:{method:'POST',params:{param:'member'}},
         getMemberDetail:{method:'POST',params:{param:'memberDetails'}},
         saveMember:{method:'POST',params:{param:'savememberDetails'}},
+        saveKategori:{method:'POST',params:{param:'savekategori'}},
+        kategori_lv1:{method:'POST',params:{param:'kategori_lv1'}},
+        savekategorilvl:{method:'POST',params:{param:'savekategorilvl'}},
+        kategoryDetail:{method:'POST',params:{param:'kategoriDetail'}},
     });
   })
 
